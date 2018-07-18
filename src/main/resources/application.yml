@@ -1,0 +1,31 @@
+spring:
+  application.name: spring-boot-jwt
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.202.128:3306/spring_boot_jwt?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+
+cors:
+  allowedOrigins: "*"
+  allowedMethods: GET,POST,DELETE,PUT,OPTIONS
+  allowedHeaders: Origin,X-Requested-With,Content-Type,Accept,Accept-Encoding,Accept-Language,Host,Referer,Connection,User-Agent,Authorization
+
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 7200
+  issuer: ITRunner
+  authenticationPath: /oauth/token
+
+management:
+  server:
+    port: 8090
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info
